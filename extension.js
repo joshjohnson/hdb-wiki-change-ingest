@@ -1,8 +1,14 @@
 import {EventSource} from 'eventsource'
 import { databases } from 'harperdb';
 
+console.log("In extension")
+
 const url = 'https://stream.wikimedia.org/v2/stream/recentchange';
-export function startOnMainThread(options = {}) {
+export function start(options = {}) {
+    console.log("In start")
+    console.log(Object.keys(databases))
+    console.log(Object.keys(databases.wiki))
+    console.log(Object.keys(databases.wiki.RecentChange))
     const eventSource = new EventSource(url);
     
     eventSource.onopen = () => {
@@ -22,7 +28,7 @@ export function startOnMainThread(options = {}) {
 
         try {
             logger.info(`Upserting record`);
-            awaitdatabases.Wiki.RecentChange.put(data);
+            await databases.wiki.RecentChange.put(data);
           } catch (error) {
             logger.error(`Could not put the data: ${error.message}`);
           }
