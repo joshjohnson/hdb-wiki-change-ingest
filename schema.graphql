@@ -1,5 +1,5 @@
-type RecentChange @(database: "wiki", table: "recent_change)  {
-    id: ID @primaryKey
+type RecentChange @table (database: "wiki", table: "recent_change)  {
+    id: ID @primaryKe
     type: String @indexed
     title: String
     namespace: Int
