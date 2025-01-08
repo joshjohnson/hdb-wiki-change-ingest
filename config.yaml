@@ -1,0 +1,4 @@
+graphqlSchema:  # These reads GraphQL schemas to define the schema of database/tables/attributes.
+  files: '*.graphql' # looks for these file
+  # path: / # exported queries are on the root path by default
+extensionModule: ./extension.js

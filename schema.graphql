@@ -1,0 +1,37 @@
+type RecentChange @(database: "wiki", table: "recent_change)  {
+    id: ID @primaryKey
+    type: String @indexed
+    title: String
+    namespace: Int
+    comment: String
+    parsedcomment: String
+    timestamp: Int
+    user: String
+    bot: Boolean
+    server_url: String
+    server_name: String
+    server_script_path: String
+    wiki: String
+    minor: Boolean
+    patrolled: Boolean
+    length: Length
+    revision: Revision
+    log_id: Int
+    log_type: String
+    log_action: String
+    log_params: Any
+    log_action_comment: String
+    meta: Any
+    created_time: Float @createdTime
+    updated_time: Float @updatedTime
+}
+
+type Revision {
+  old: Int
+  new: Int
+}
+
+type Length {
+  old: Int
+  new: Int
+}
